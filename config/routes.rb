@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  resources :favorites
-  resources :likes
-  resources :comments
-  resources :posts
+
   devise_for :users
+
+  resources :posts  do
+    resources :likes
+    resources :favorites
+    resources :comments
+  end
+
+  post '/posts/:post_id/favorites(.:format)' => 'favorites#create', as: :post_favorites_new
+  post '/posts/:post_id/likes(.:format)' => 'likes#create', as: :post_likes_new
+
+  get "feedfood" => "main#feed"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
