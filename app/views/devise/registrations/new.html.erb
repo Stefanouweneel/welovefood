@@ -10,12 +10,13 @@
 
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_field :description, :size=>"200" %>
   </div>
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.radio_button :gender, :checked => true %> Male
+    <%= f.radio_button :gender, :checked => true %> Female
   </div>
 
   <div class="field">
