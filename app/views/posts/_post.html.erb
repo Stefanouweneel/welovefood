@@ -1,17 +1,29 @@
 <h4><%= post.title %></h4>
 <%= image_tag post.image %>
 
+<!-- likes -->
+<% liked = Like.find_by( post: post, user: current_user ) != nil %>
+<% btn_color = liked ? "warning" : "default" %>
+<% action = liked ? :destroy : :create %>
 
-  <!-- comments -->
-  <!-- links -->
-  <!-- favorites -->
-  <% favorited = Favorite.find_by( post: post, user: current_user ) != nil %>
-  <% btn_color = favorited ? "warning" : "default" %>
-  <% action = favorited ? :destroy : :create %>
+<%= link_to "Like", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
+<%= post.likes.count %>
 
-  <%= link_to "Like", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
-  <%= post.likes.count %>
-  <% action = favorited ? :destroy : :create %>
+<!-- favorites -->
+<% favorited = Favorite.find_by( post: post, user: current_user ) != nil %>
+<% btn_color = favorited ? "warning" : "default" %>
+<% action = favorited ? :destroy : :create %>
 
-  <%= link_to "Favorite", post_favorites_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
-  <%= post.favorites.count %>
+<%= link_to "Favorite", post_favorites_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
+<%= post.favorites.count %>
+
+<!-- comments -->
+
+<% post.comments.each do |c| %>
+  <p>
+    <%= c.user.email %>
+  </p>
+  <p>
+    <%= c.comment %>
+  </p>
+<% end %>
