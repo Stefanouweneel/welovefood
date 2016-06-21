@@ -1,0 +1,13 @@
+<h1>Your Profile</h1>
+
+<% @users.each do |user| %>
+Name:       <%= user.name %> <br>
+Gender:     <% if user.gender == true %> Male
+            <% else %> Female
+            <% end %> <br>
+Location:   <%= user.location %> <br>
+Biography:  <%= user.description %> <br><br>
+            <%= image_tag user.avatar.url if user.avatar.present? %>
+<% end %>
+
+<%= link_to 'Edit', edit_user_registration_path %>
