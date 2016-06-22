@@ -1,6 +1,6 @@
 class MainController < ApplicationController
 
-  def feed
+  def index
     @posts = Post.all
     if user_signed_in?
       @followers = current_user.followers

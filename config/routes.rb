@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   post '/posts/:post_id/likes(.:format)' => 'likes#create', as: :post_likes_newavorites_new
   post '/users/:user_id/follow(.:format)' => 'users#follow', as: :follow_user
 
-  get "feed" => "main#feed"
   get "profile" => "main#profile"
 
-  root "main#feed"
+  root "main#index"
 
 end
