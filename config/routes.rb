@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :users, only: [:show, :edit, :update]
 
   resources :posts  do
     resources :likes
@@ -11,9 +12,15 @@ Rails.application.routes.draw do
   post '/posts/:post_id/comments(.:format)' => 'comments#create', as: :post_comments_new
   post '/posts/:post_id/likes(.:format)' => 'likes#create', as: :post_likes_new
   post '/posts/:post_id/favorites(.:format)' => 'favorites#create', as: :post_favorites_new
+  post '/users/:user_id/follow(.:format)' => 'users#follow', as: :follow_user
+
 
   get "feedfood" => "main#feed"
+  get "profile" => "main#profile"
+
+  root "main#feed"
   
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -62,10 +69,4 @@ Rails.application.routes.draw do
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

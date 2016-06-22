@@ -1,3 +1,5 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +15,18 @@
  *= require_tree .
  *= require_self
  */
+ .container {
+   width: 540px;
+ }
+
+.avatar-feed{
+  width: 30px;
+}
+
+.media-heading{
+  margin-top: 10px;
+}
+
+ main {
+    padding-top: 100px;
+ }
