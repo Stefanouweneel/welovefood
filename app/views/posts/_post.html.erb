@@ -1,29 +1,34 @@
-<h4><%= post.title %></h4>
-<%= image_tag post.image %>
+<div class="thumbnail">
+  <div class="media">
+  <div class="media-left">
+    <%= image_tag post.user.avatar.url, class: "avatar-feed" %>
+  </div>
+  <div class="media-body">
+    <%= post.user.name %><br>
 
-<!-- likes -->
-<% liked = Like.find_by( post: post, user: current_user ) != nil %>
-<% btn_color = liked ? "warning" : "default" %>
-<% action = liked ? :destroy : :create %>
-
-<%= link_to "Like", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
-<%= post.likes.count %>
-
-<!-- favorites -->
-<% favorited = Favorite.find_by( post: post, user: current_user ) != nil %>
-<% btn_color = favorited ? "warning" : "default" %>
-<% action = favorited ? :destroy : :create %>
-
-<%= link_to "Favorite", post_favorites_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
-<%= post.favorites.count %>
-
-<!-- comments -->
-
-<% post.comments.each do |c| %>
+  </div>
+</div>
+  <h3><%= link_to post.title, post %></h3>
+  <%= image_tag post.image.url, class: "img-feed" %>
   <p>
-    <%= c.user.email %>
+    <%= "#{post.likes.count} Like(s)" %>
   </p>
-  <p>
-    <%= c.comment %>
-  </p>
-<% end %>
+  <!-- likes -->
+  <% liked = Like.find_by( post: post, user: current_user ) != nil %>
+  <% btn_color = liked ? "danger" : "default" %>
+  <% action = liked ? :destroy : :create %>
+
+  <%= link_to post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
+  <% end %>
+
+  <!-- comments -->
+  <% post.comments.each do |c| %>
+    <p>
+      <%= c.user.name %>
+    </p>
+    <p>
+      <%= c.comment %>
+    </p>
+  <% end %>
+</div>
