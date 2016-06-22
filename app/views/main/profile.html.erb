@@ -10,4 +10,4 @@ Biography:  <%= user.description %> <br><br>
             <%= image_tag user.avatar.url if user.avatar.present? %>
 <% end %>
 
-<%= link_to 'Edit', edit_user_registration_path %>
+<%= link_to 'Edit', edit_user_registration_path(current_user) %>
