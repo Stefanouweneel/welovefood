@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
   def update
   @user = User.find(current_user.id)
     if @user.update(sign_up_params)
+      flash[:notice] = "Your profile has been updated"
       redirect_to profile_path
     else
       render "edit"
