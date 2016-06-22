@@ -11,7 +11,7 @@ Gender:     <% if user.gender == true %> Male
             <% end %> <br>
 Location:   <%= user.location %> <br>
 Biography:  <%= user.description %> <br><br>
-            <%= image_tag user.avatar.url if user.avatar.present? %>
+            <%= image_tag user.avatar.url if user.avatar.present? %> <br><br>
 <% end %>
 
 <%= link_to 'Edit', edit_user_registration_path(current_user) %>
