@@ -11,7 +11,7 @@ class LikesController < ApplicationController
       like.save
     end
 
-    redirect_to feedfood_path
+    redirect_to feed_path
   end
 
 end

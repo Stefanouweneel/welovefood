@@ -16,6 +16,11 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- main {
-    padding-top: 100px;
+
+ .container{
+   width: 540px;
  }
+
+.avatar-feed{
+  width: 30px;
+}
