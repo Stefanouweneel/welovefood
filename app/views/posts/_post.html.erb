@@ -9,13 +9,17 @@
 <%= link_to "Like", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
 <%= post.likes.count %>
 
-<!-- favorites -->
+  <!-- favorites -->
 <% favorited = Favorite.find_by( post: post, user: current_user ) != nil %>
 <% btn_color = favorited ? "warning" : "default" %>
 <% action = favorited ? :destroy : :create %>
 
 <%= link_to "Favorite", post_favorites_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
 <%= post.favorites.count %>
+
+<% if user_signed_in? %>
+  <%= link_to "Follow", follow_user_path( post.user ), method: :post, class: "btn btn-#{btn_color} btn-xs" %>
+<% end %>
 
 <!-- comments -->
 
