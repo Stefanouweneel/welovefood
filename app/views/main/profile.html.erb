@@ -1,17 +1,18 @@
-<h1>Your Profile</h1>
 
-<% flash.each do |key, value| %>
-<div class="alert alert-<%= key %>"><%= value %></div>
-<% end %> <br>
+  <h1>Your Profile</h1>
 
-<% @users.each do |user| %>
-Name:       <%= user.name %> <br>
-Gender:     <% if user.gender == true %> Male
-            <% else %> Female
-            <% end %> <br>
-Location:   <%= user.location %> <br>
-Biography:  <%= user.description %> <br><br>
-            <%= image_tag user.avatar.url if user.avatar.present? %> <br><br>
-<% end %>
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %> <br>
 
-<%= link_to 'Edit', edit_user_registration_path(current_user) %>
+  <% @users.each do |user| %>
+  Name:       <%= user.name %> <br>
+  Gender:     <% if user.gender == true %> Male
+              <% else %> Female
+              <% end %> <br>
+  Location:   <%= user.location %> <br>
+  Biography:  <%= user.description %> <br><br>
+              <%= image_tag user.avatar.url if user.avatar.present? %> <br><br>
+  <% end %>
+
+  <%= link_to 'Edit', edit_user_registration_path(current_user) %>
