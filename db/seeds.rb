@@ -10,12 +10,14 @@ Like.delete_all
 Post.delete_all
 User.delete_all
 
-joy = User.create( email: 'joy@ex.com', password: 'joy123455' )
-paul = User.create( email: 'paul@work.net', password: 'paul123455' )
-john = User.create( email: 'john@work.com', password: 'john123455' )
-dk = User.create( email:   'dk@work.com', password: 'dk123455' )
+joy = User.create( name:"Joy DenHag" , email: 'joy@ex.com', password: 'joy123455' )
+paul = User.create( name:"Paul Van Amsterdam", email: 'paul@work.net', password: 'paul123455' )
+john = User.create( name:"John van Rotterdam", email: 'john@work.com', password: 'john123455' )
+dk = User.create( name:"DK van Kaas", email:'dk@work.com', password: 'dk123455' )
+
+
 
 post1 = Post.create(title: "Hello We love food", description: "Eet smakelijk", user: joy)
-post1.likes << Like.create(user: anton)
+post1.likes << Like.create(user: paul)
 
 joy.followers << Follower.find(paul.id)
