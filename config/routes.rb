@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   post '/posts/:post_id/comments(.:format)' => 'comments#create', as: :post_comments_new
-  post '/posts/:post_id/likes(.:format)' => 'likes#create', as: :post_likes_newavorites_new
+  post '/posts/:post_id/likes(.:format)' => 'likes#create', as: :post_likes_new
   post '/users/:user_id/follow(.:format)' => 'users#follow', as: :follow_user
 
   get "profile" => "main#profile"
