@@ -1,5 +1,34 @@
+
 <% @users.each do |user| %>
   <% if user != current_user %>
-  <%= user.name %>   <%= user.description %><br>
+    <div class="list-group-item">
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag user.avatar.url, class: "avatar-feed" %>
+        </div>
+        <div class="media-body row">
+          <div class="col-xs-9 col-sm-9 col-md-9">
+            <%= user.name %><br>
+            <%= user.description %><br>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+
+            <!-- Follow -->
+            <% followed = user.followers.find_by( id: current_user.id ) != nil %>
+            <% btn_color = followed ? "success" : "default" %>
+
+            <% if !followed %>
+              <%= link_to follow_user_path( user ), method: :post, class: "btn btn-#{btn_color} btn-xs" do %>
+                 Follow
+              <% end %>
+            <% else %>
+              <%= link_to unfollow_user_path( user ), method: :post, class: "btn btn-#{btn_color} btn-xs" do %>
+                Unfollow
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>

@@ -10,7 +10,7 @@
           <li><%= link_to "Log In", new_user_session_path %></li>
       <% else %>
           <li>
-            <%= link_to profile_path, class: "nav-profile" do  %>
+            <%= link_to profile_path(id: current_user.id) , class: "nav-profile" do  %>
               <%= image_tag current_user.avatar.url, class: "avatar-feed" %>
               Profile
             <% end %>

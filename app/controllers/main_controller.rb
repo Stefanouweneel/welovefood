@@ -5,7 +5,7 @@ class MainController < ApplicationController
   end
 
   def profile
-    @users = User.where(email: current_user.email)
+    @user = User.find(params[:id])
   end
 
   def followees
@@ -17,7 +17,7 @@ class MainController < ApplicationController
     user.followers << Follower.find(current_user.id)
     user.save
 
-    redirect_to root_path
+    redirect_to followees_path
   end
 
 
@@ -32,7 +32,7 @@ class MainController < ApplicationController
       user.followers.delete(follower)
     end
 
-    redirect_to root_path
+    redirect_to followees_path
   end
 
 end
