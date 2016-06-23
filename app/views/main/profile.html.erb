@@ -1,5 +1,24 @@
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
+
+<h1>Your Profile</h1>
+
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>"><%= value %></div>
+<% end %> <br>
+
+<% @users.each do |user| %>
+Name:       <%= user.name %> <br>
+Gender:     <%= user.gender %> <br>
+Location:   <%= user.location %> <br>
+Biography:  <%= user.description %> <br><br>
+            <%= image_tag user.avatar.url if user.avatar.present? %><br><br>
+
+<%= link_to 'Edit your profile', edit_user_registration_path(current_user), class: "btn btn-primary pull-right" %>
+
+<% @users.each do |user| %>
+  <h3>Welcome to your profile <%= user.name %></h3>
+
 <% end %>
 <div class="panel profile">
   <% @users.each do |user| %>
@@ -42,3 +61,19 @@
 
   <% end %>
 </div>
+||||||| merged common ancestors
+<%= link_to 'Edit your profile', edit_user_registration_path(current_user) %>
+=======
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %> <br>
+
+<ul class="list-group">
+  <% @users.each do |user| %>
+    <li class="list-group-item"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span>Name:       <%= user.name %> </li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span>Gender:     <%= user.gender %> </li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span>Location:   <%= user.location %> </li>
+    <li class="list-group-item"><span class="glyphicon glyphicon-ice-lolly-tasted" aria-hidden="true"></span>Biography:  <%= user.description %> </li>
+    <li class="list-group-item"><%= image_tag user.avatar.url, class: "img-responsive"  %></li>
+  <% end %>
+</ul>
