@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts  do
     resources :likes
     resources :comments
+
   end
 
   post '/posts/:post_id/comments(.:format)' => 'comments#create', as: :post_comments_new
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
 
   get "profile" => "main#profile"
   get "feed" => "main#index"
+
+  get "followees" => "main#followees"
+
   root "main#index"
 
 end
