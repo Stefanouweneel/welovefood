@@ -17,8 +17,14 @@ Biography:  <%= user.description %> <br><br>
 <%= link_to 'Edit your profile', edit_user_registration_path(current_user), class: "btn btn-primary pull-right" %>
 
 <% @users.each do |user| %>
+<<<<<<< c9cbc21c7d0bb7d61b7ed47342dc7fa873c26e85
   <h3>Welcome to your profile <%= user.name %></h3>
 
+||||||| merged common ancestors
+  <h3>Welcome to your profile <%= user.name %></h3>
+=======
+  <h3>Welcome to your profile, <%= user.name %></h3>
+>>>>>>> Add styling to new post form
 <% end %>
 <div class="panel profile">
   <% @users.each do |user| %>
