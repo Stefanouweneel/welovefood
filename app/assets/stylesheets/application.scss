@@ -1,31 +1,51 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
+em{
+  font-size: 10px;
+}
+
+h3{
+  margin-top: 5px;
+}
  .container{
    width: 540px;
  }
 
 .avatar-feed{
-  width: 30px;
+  width: 35px;
 }
 
 .nav-profile img{
   align: top;
   width: 20px;
+}
+
+.love{
+  color: #d43f3a;
+}
+.joinus{
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+
+.joinus h1{
+  font-size: 72px;
+}
+
+.joinus h2{
+  font-size: 36px;
+}
+
+.footer{
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #f2eaea;
 }

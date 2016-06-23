@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.order('created_at desc')
     if user_signed_in?
       @followers = current_user.followers
     end

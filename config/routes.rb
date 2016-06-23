@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/users/:user_id/follow(.:format)' => 'users#follow', as: :follow_user
 
   get "profile" => "main#profile"
-
+  get "feed" => "main#index"
   root "main#index"
 
 end

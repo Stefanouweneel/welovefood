@@ -4,7 +4,8 @@
       <%= image_tag post.user.avatar.url, class: "avatar-feed" %>
     </div>
     <div class="media-body">
-      <%= post.user.name %><br>
+      <%= link_to post.user.name, profile_path %><br>
+      <em><%= post.created_at.strftime("%H:%M . %d-%m-%Y") %></em>
     </div>
   </div>
   <h3><%= link_to post.title, post %></h3>
