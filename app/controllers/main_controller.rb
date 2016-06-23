@@ -14,11 +14,4 @@ class MainController < ApplicationController
   def edit
   end
 
-  def profile
-    @users = User.where(email: current_user.email)
-  end
-
-  def edit
-  end
-
 end

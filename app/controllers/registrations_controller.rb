@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
   @user = User.find(current_user.id)
-    if @user.update(sign_up_params)
+    if @user.update(edit_params)
       flash[:notice] = "Your profile has been updated"
       redirect_to profile_path
     else
@@ -15,6 +15,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def edit_params
+    params[:user].permit(:name, :description, :avatar, :gender, :location)
+  end
 
   def sign_up_params
     params.require(:user).permit(:name, :description, :password, :password_confirmation, :email, :avatar, :gender, :location)
