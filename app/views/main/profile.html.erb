@@ -1,15 +1,44 @@
-<h1>Your Profile</h1>
-
 <% flash.each do |key, value| %>
-<div class="alert alert-<%= key %>"><%= value %></div>
-<% end %> <br>
-
-<% @users.each do |user| %>
-Name:       <%= user.name %> <br>
-Gender:     <%= user.gender %> <br>
-Location:   <%= user.location %> <br>
-Biography:  <%= user.description %> <br><br>
-            <%= image_tag user.avatar.url if user.avatar.present? %><br><br>
+  <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
+<div class="panel profile">
+  <% @users.each do |user| %>
+    <div class="panel-body row">
+      <div class="col-md-4 col-xs-4">
+        <% if user.avatar.present? %>
+          <%= image_tag user.avatar.url, class:"profile_img" %>
+        <% end %>
+      </div>
+      <div class="col-md-8 col-xs-8">
+        <h2><%= user.name %></h2>
+        <b>Gender:</b> <%= user.gender %><br>
+        <b>Location:</b> <%= user.location %><br>
+        <b>Biography:</b> <%= user.description %><br>
+        <% if user.id == current_user.id %>
+          <%= link_to 'Edit your profile', edit_user_registration_path(current_user) %>
+        <% end %>
+      </div>
+    </div>
+    <ul class="nav nav-pills nav-justified">
+      <li role="Posts" class="active">
+        <%= link_to "Time Line", "#" %>
+        </li>
+      <li role="Folowers"><a href="#">Folowers</a></li>
+      <li role="Folowings"><a href="#">Folowings</a></li>
+    </ul>
 
-<%= link_to 'Edit your profile', edit_user_registration_path(current_user) %>
+    <!-- POSTS -->
+    <div class="posts">
+      <%= render user.posts %>
+    </div>
+
+    <!-- Folowers -->
+    <div class="folowers">
+    </div>
+
+    <!-- Folowings -->
+    <div class="folowings">
+    </div>
+
+  <% end %>
+</div>
