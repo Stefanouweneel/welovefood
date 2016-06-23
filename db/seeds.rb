@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Like.delete_all
-Favorite.delete_all
 Post.delete_all
 User.delete_all
 
-frank = User.create( email: 'frank@ex.com', password: 'abcd1234' )
-alice = User.create( email: 'paul@work.net', password: 'abcd1234' )
-anton = User.create( email: 'john@work.com', password: 'abcd1234' )
+joy = User.create( email: 'joy@ex.com', password: 'joy123455' )
+paul = User.create( email: 'paul@work.net', password: 'paul123455' )
+john = User.create( email: 'john@work.com', password: 'john123455' )
+dk = User.create( email:   'dk@work.com', password: 'dk123455' )
 
-post1 = Post.create(title: "Hello We love food", description: "Eet smakelijk", user: frank)
+post1 = Post.create(title: "Hello We love food", description: "Eet smakelijk", user: joy)
 post1.likes << Like.create(user: anton)
 
-frank.followers << Follower.find(alice.id)
+joy.followers << Follower.find(paul.id)
