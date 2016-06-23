@@ -12,6 +12,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'socialization'
 
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.8'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
