@@ -4,7 +4,8 @@
       <%= image_tag post.user.avatar.url, class: "avatar-feed" %>
     </div>
     <div class="media-body">
-      <%= post.user.name %><br>
+      <%= link_to post.user.name, profile_path %><br>
+      <em><%= post.created_at.strftime("%H:%M . %d-%m-%Y") %></em>
     </div>
   </div>
   <h3><%= link_to post.title, post %></h3>
@@ -23,18 +24,34 @@
     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
   <% end %>
 
-
-  <% if user_signed_in? %>
-    <%= link_to "Follow", follow_user_path( post.user ), method: :post, class: "btn btn-xs" %>
-  <% end %>
-
   <!-- comments -->
-  <% post.comments.each do |c| %>
-    <p>
-      <%= c.user.name %>
-    </p>
-    <p>
-      <%= c.comment %>
-    </p>
-  <% end %>
-</div>
+  <div class='comments'>
+    <% post.comments.each do |c| %>
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag c.user.avatar.url, class: "avatar-comment" %>
+        </div>
+        <div class="media-body">
+          <%= link_to c.user.name, profile_path %>: <%= c.comment %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- new comment-->
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag current_user.avatar.url, class: "avatar-comment" %>
+      </div>
+      <div class="media-body">
+        <%= form_tag post_comments_path( post, :comment ), method: :post do %>
+          <div class="form-group">
+            <%= text_area_tag :comment, "", class:"form-control" %>
+          </div>
+          <%= submit_tag "Comment", class:"btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div> <!-- comments -->
+
+</div> <!-- thumbnail -->

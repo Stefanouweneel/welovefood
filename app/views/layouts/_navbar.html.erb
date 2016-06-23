@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "We Love Food", root_path, class: "navbar-brand" %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        We <span class="love"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></span> food
+      <% end %>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if !user_signed_in? %>
