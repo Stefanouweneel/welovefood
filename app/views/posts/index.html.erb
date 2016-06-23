@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Posts</h1>
-
-<table>
-  <thead>
+<div class="joinus">
+<h1>FoodFeed</h1>
+</div>
+<%= link_to 'Create a new post', new_post_path, class: "btn btn-primary pull-right", type: "button" %>
+<table class="table">
+  <thead class="thead-default">
     <tr>
       <th><h3></h3></th>
-      <th><h3>Title</h3></th>
+      <th><h3>Post</h3></th>
       <th><h3>Description</h3></th>
-      <th><h3>User</h3></th>
+      <th><h3>By</h3></th>
     </tr>
   </thead>
 
@@ -18,15 +19,15 @@
         <td><%= image_tag post.image.url, class: "avatar-feed" %></td>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', post, class: "btn btn-secondary", type: "button" %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to post.user.name, profile_path %></td>
+        <td><%= link_to 'Show', post, class: "btn btn-primary", type: "button" %></td>
+        <% if user_signed_in? && current_user.name == post.user.name %>
+          <td><%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary", type: "button" %></td>
+          <td><%= link_to 'Destroy', post, class: "btn btn-primary", type: "button", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
