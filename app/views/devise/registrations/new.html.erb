@@ -9,13 +9,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, :size=>"200" %>
+    <%= f.label :biography %><br />
+    <%= f.text_field :description, :size=>"75" %>
   </div>
 
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location, :size=>"100" %>
+    <%= f.text_field :location %>
   </div>
 
   <div class="field">
@@ -45,11 +45,9 @@
   <div class="field">
     <%= f.label :avatar %><br>
     <%= f.file_field :avatar %>
-  </div>
+  </div><br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
-  </div>
+  </div><br>
 <% end %>
-
-<%= render "devise/shared/links" %>
