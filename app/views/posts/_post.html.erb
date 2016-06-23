@@ -32,7 +32,7 @@
           <%= image_tag c.user.avatar.url, class: "avatar-comment" %>
         </div>
         <div class="media-body">
-          <%= link_to c.user.name, profile_path %>: <%= c.comment %>
+          <%= link_to c.user.name, profile_path %>: <%= sanitize c.comment && c.comment.html_safe %>
         </div>
       </div>
     <% end %>
@@ -45,13 +45,14 @@
       <div class="media-body">
         <%= form_tag post_comments_path( post, :comment ), method: :post do %>
           <div class="form-group">
-            <%= text_area_tag :comment, "", class:"form-control" %>
+            <%= text_area_tag :comment, "", class:"form-control", :id => 'wysihtml5-textarea' %>
           </div>
           <%= submit_tag "Comment", class:"btn btn-default" %>
         <% end %>
       </div>
     </div>
-
   </div> <!-- comments -->
-
 </div> <!-- thumbnail -->
+<script type="text/javascript">
+    $('#wysihtml5-textarea').wysihtml5();
+</script>

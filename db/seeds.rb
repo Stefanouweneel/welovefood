@@ -15,8 +15,6 @@ paul = User.create( name:"Paul Van Amsterdam", email: 'paul@work.net', password:
 john = User.create( name:"John van Rotterdam", email: 'john@work.com', password: 'john123455' )
 dk = User.create( name:"DK van Kaas", email:'dk@work.com', password: 'dk123455' )
 
-
-
 post1 = Post.create(title: "Hello We love food", description: "Eet smakelijk", user: joy)
 post1.likes << Like.create(user: paul)
 
