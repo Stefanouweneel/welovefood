@@ -3,6 +3,20 @@
 <div class="text-center">
   <h1>FoodFeed</h1><br>
   <%= link_to 'Create a new post', new_post_path, class: "btn btn-warning" %>
+
+<br><br>
+
+  <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+  <%= submit_tag "Search" %>
+  <% end %><br>
+
+  <% if @postsearch.present? %>
+    <%= render @postsearch %>
+  <% else %><br>
+    <p>There are no posts containing the term(s) <%= params[:search] %>. <br>
+      Here are all the other posts:</p>
+
 </div>
 
 <br><br>
@@ -32,5 +46,5 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
