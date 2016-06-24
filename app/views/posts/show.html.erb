@@ -10,14 +10,14 @@
   <li class="list-group-item"><h3>Title:</h3><%= @post.title %></li>
   <li class="list-group-item"><h3>Description:</h3><%= sanitize @post.description %></li>
   <li class="list-group-item"><h3>By:  <%= link_to @post.user.name, profile_path %></h3></li>
-  <li class="list-group-item"><%= image_tag @post.image.url %></li>
+  <li class="list-group-item"><%= image_tag @post.image.url, class: "img-responsive" %></li><br>
 
 <% if user_signed_in? && current_user.name == @post.user.name %>
   <td><%= link_to 'Edit', edit_post_path, class: "btn btn-primary" %></td>
   <td><%= link_to 'Delete', post_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
 <% end %>
 
-<br>
+<br><br>
 <%= link_to "Back", :back, class: "btn btn-primary" %>
 
 <br>
