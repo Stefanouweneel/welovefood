@@ -1,9 +1,0 @@
-
-<% if user_signed_in? %>
-<h2>Following</h2>
-<ul>
-  <% @followers.each do |follower| %>
-     <li><%= follower.email %></li>
-  <% end %>
-</ul>
-<% end %>

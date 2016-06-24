@@ -4,7 +4,7 @@
       <%= image_tag post.user.avatar.url, class: "avatar-feed" %>
     </div>
     <div class="media-body">
-      <%= link_to post.user.name, profile_path %><br>
+      <%= link_to post.user.name, profile_path(id: post.user.id) %><br>
       <em><%= post.created_at.strftime("%H:%M . %d-%m-%Y") %></em>
     </div>
   </div>
@@ -13,7 +13,6 @@
   <p>
     <%= "#{post.likes.count} Like(s)" %>
   </p>
-
 
   <!-- likes -->
   <% liked = Like.find_by( post: post, user: current_user ) != nil %>
@@ -32,7 +31,7 @@
           <%= image_tag c.user.avatar.url, class: "avatar-comment" %>
         </div>
         <div class="media-body">
-          <%= link_to c.user.name, profile_path %>: <%= sanitize c.comment && c.comment.html_safe %>
+          <%= link_to c.user.name, profile_path( id: c.user.id) %>: <%= sanitize c.comment && c.comment.html_safe %>
         </div>
       </div>
     <% end %>

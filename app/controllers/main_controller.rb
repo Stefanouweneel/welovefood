@@ -1,11 +1,11 @@
 class MainController < ApplicationController
 
   def index
-      @posts = Post.order('created_at desc')
+    @posts = Post.feed_for current_user if current_user
   end
 
   def profile
-    @users = User.where(email: current_user.email)
+    @user = User.find(params[:id])
   end
 
   def followees
@@ -14,10 +14,10 @@ class MainController < ApplicationController
 
   def follow
     user = User.find(params[:user_id])
-    user.followers << Follower.find(current_user.id)
+    user.followers << current_user
     user.save
 
-    redirect_to root_path
+    redirect_to :back
   end
 
 
@@ -32,7 +32,7 @@ class MainController < ApplicationController
       user.followers.delete(follower)
     end
 
-    redirect_to root_path
+    redirect_to :back
   end
 
 end
