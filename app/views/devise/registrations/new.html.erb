@@ -11,11 +11,27 @@
   <div class="form-group">
     <%= f.label "Biography" %>
     <%= f.text_area :description, class:"form-control" %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, :size=>"200" %>
+
+  <div class="field">
+    <%= f.label :biography %><br />
+    <%= f.text_field :description, :size=>"75" %>
   </div>
 
   <div class="form-group">
     <%= f.label :location %>
     <%= f.text_field :location, class:"form-control" %>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location, :size=>"100" %>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
   </div>
 
   <div class="form-group">
@@ -47,9 +63,15 @@
   <div class="form-group">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <%= f.submit "Sign up", class:"btn btn-default" %>
   </div>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div><br>
 <% end %>

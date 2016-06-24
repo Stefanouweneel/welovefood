@@ -1,33 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<div class="text-center">
+  <h1>FoodFeed</h1><br>
+  <%= link_to 'Create a new post', new_post_path, class: "btn btn-warning" %>
 
-<table>
-  <thead>
+<br><br>
+
+  <%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+  <%= submit_tag "Search" %>
+  <% end %><br>
+
+  <% if @postsearch.present? %>
+    <%= render @postsearch %>
+  <% else %><br>
+    <p>There are no posts containing the term(s) <%= params[:search] %>. <br>
+      Here are all the other posts:</p>
+
+</div>
+
+<br><br>
+
+<table class="table table table-striped">
+  <thead class="thead-default">
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th><h3></h3></th>
+      <th><h3>Post</h3></th>
+      <th><h3>Description</h3></th>
+      <th><h3>By</h3></th>
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.image %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag post.image.url, class: "avatar-feed" %></td>
+        <td><%= link_to post.title, post_path(post) %></td>
+        <td><%= sanitize post.description %></td>
+        <td><%= link_to post.user.name, profile_path %></td>
+        <% if user_signed_in? && current_user.name == post.user.name %>
+          <td><%= link_to 'Edit post', edit_post_path(post), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Delete post', post, class: "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
-
-<%= link_to 'New Post', new_post_path %>

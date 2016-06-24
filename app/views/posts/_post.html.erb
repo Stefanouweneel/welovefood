@@ -32,7 +32,7 @@
           <%= image_tag c.user.avatar.url, class: "avatar-comment" %>
         </div>
         <div class="media-body">
-          <%= link_to c.user.name, profile_path %>: <%= c.comment %>
+          <%= link_to c.user.name, profile_path %>: <%= sanitize c.comment && c.comment.html_safe %>
         </div>
       </div>
     <% end %>
@@ -51,7 +51,5 @@
         <% end %>
       </div>
     </div>
-
   </div> <!-- comments -->
-
 </div> <!-- thumbnail -->
