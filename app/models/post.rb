@@ -8,5 +8,10 @@ class Post < ActiveRecord::Base
   scope :feed_for, -> (user) do
     order(created_at: :desc).where(user: user.followings)
   end
-  
+
+  def self.search(search)
+  where("title LIKE ? OR description LIKE ?",
+    "%#{search}%", "%#{search}%")
+  end
+
 end
