@@ -10,7 +10,7 @@ class LikesController < ApplicationController
       like = Like.new( post: post, user: current_user )
       like.save
     end
-
+    
     redirect_to feed_path
   end
 
