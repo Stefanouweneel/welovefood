@@ -1,4 +1,19 @@
-<%= render @posts %>
+<div class="text-center">
+  <h1>FoodFeed</h1>
+  <p>
+  <%= link_to 'Create a new post', new_post_path, class: "btn btn-warning" %>
+</p>
+  <%= form_tag(feed_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <br>
+</div>
+
+
+  <% if @postsearch.present? %>
+    <%= render @postsearch %>
+  <% end %>
 <div class="center">
-  <%= link_to "Follow", followees_path, class: "btn btn-success btn-lg" %>
+  <%= link_to "Add Followers", followees_path, class: "btn btn-success btn-lg" %>
 </div>

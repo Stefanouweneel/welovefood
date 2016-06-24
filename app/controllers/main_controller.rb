@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    @posts = Post.feed_for current_user if current_user
+    @postsearch = Post.feed_for(current_user, params[:search]) if user_signed_in?
   end
 
   def profile

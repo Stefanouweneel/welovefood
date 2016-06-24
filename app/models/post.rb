@@ -5,8 +5,10 @@ class Post < ActiveRecord::Base
   has_many :likes
   has_many :favorites
 
-  scope :feed_for, -> (user) do
-    order(created_at: :desc).where(user: user.followings)
+  scope :feed_for, -> (user, search) do
+    user.followings << user
+    order(created_at: :desc).where(user: user.followings).where("title LIKE ? OR description LIKE ?",
+      "%#{search}%", "%#{search}%")
   end
 
   def self.search(search)
