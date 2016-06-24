@@ -1,14 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def edit
-  @user = current_user
+    @user = current_user
   end
 
   def update
-  @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     if @user.update(edit_params)
       flash[:notice] = "Your profile has been updated"
-      redirect_to profile_path
+      redirect_to profile_path(id: @user.id)
     else
       render "edit"
     end

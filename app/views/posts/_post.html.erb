@@ -8,20 +8,18 @@
       <em><%= post.created_at.strftime("%H:%M . %d-%m-%Y") %></em>
     </div>
   </div>
-  <h3><%= link_to post.title, post %></h3>
+  <h3><%= link_to post.title, post, id:"#{post.id}" %></h3>
   <%= image_tag post.image.url, class: "img-feed" %>
-  <p>
-    <%= "#{post.likes.count} Like(s)" %>
+  <p >
+    <span id="likes-count-<%= post.id %>"><%= post.likes.count %></span> Like(s)
   </p>
 
   <!-- likes -->
   <% liked = Like.find_by( post: post, user: current_user ) != nil %>
   <% btn_color = liked ? "danger" : "default" %>
-  <% action = liked ? :destroy : :create %>
-
-  <%= link_to post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs" do %>
+  <span id="like-<%= post.id %>" onClick="like(<%= post.id %>)" class="btn btn-<%= btn_color %>" %>
     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Like
-  <% end %>
+  </span>
 
   <!-- comments -->
   <div class='comments'>

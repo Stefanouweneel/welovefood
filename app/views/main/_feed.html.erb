@@ -9,11 +9,11 @@
   <% end %>
   <br>
 </div>
-
-
+<div class="posts">
   <% if @postsearch.present? %>
     <%= render @postsearch %>
   <% end %>
+</div>
 <div class="center">
   <%= link_to "Add Followers", followees_path, class: "btn btn-success btn-lg" %>
 </div>
